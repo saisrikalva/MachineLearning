@@ -1,0 +1,107 @@
+1.
+import statistics as s
+data = [10, 20, 20, 30, 40]
+print("Mean:", s.mean(data))
+print("Median:", s.median(data))
+print("Mode:", s.mode(data))
+print("Variance:", s.pvariance(data))
+print("Standard Deviation:", round(s.pstdev(data), 2))
+
+
+2.
+import statistics
+import math
+import numpy as np
+from scipy import stats
+a = [10, 20, 30, 40, 50]
+print("Mean:", statistics.mean(a))
+print("Square Root:", math.sqrt(25))
+print("NumPy Mean:", np.mean(a))
+print("Maximum:", np.max(a))
+print("SciPy Mode:", stats.mode(a))
+
+
+3.
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'Name': ['A', 'B', 'C'],
+    'Marks': [80, 90, 70]
+}
+df = pd.DataFrame(data)
+print(df)
+plt.plot(df['Name'], df['Marks'])
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.title("Student Marks")
+plt.show()
+
+
+4.
+from scipy.stats import linregress
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 5, 4, 5]
+model = linregress(x, y)
+print("Slope:", round(model.slope, 2))
+print("Intercept:", round(model.intercept, 2))
+prediction = model.slope * 6 + model.intercept
+print("Prediction:", round(prediction, 2))
+
+
+5.
+from sklearn.linear_model import LinearRegression
+X = [
+    [1000, 2, 5],
+    [1200, 2, 4],
+    [1500, 3, 5],
+    [1800, 3, 3],
+    [2000, 4, 2],
+    [2500, 4, 1]
+]
+y = [95000, 108000, 152500, 181500, 219000, 250500]
+model = LinearRegression()
+model.fit(X, y)
+prediction = model.predict([[1500, 3, 5]])
+print("Predicted House Price:", round(prediction[0], 2))
+
+
+6.
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import GridSearchCV
+X = [[1], [2], [3], [4], [5], [6]]
+y = [0, 0, 0, 1, 1, 1]
+model = DecisionTreeClassifier()
+params = {'max_depth': [1, 2, 3]}
+grid = GridSearchCV(model, params, cv=2)
+grid.fit(X, y)
+print("Best Parameters:", grid.best_params_)
+print("Prediction:", grid.predict([[5]]))
+
+
+7.
+from sklearn.neighbors import KNeighborsClassifier
+X = [[1], [2], [3], [6], [7], [8]]
+y = [0, 0, 0, 1, 1, 1]
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X, y)
+print("Prediction:", model.predict([[5]]))
+
+
+8.
+from sklearn.linear_model import LogisticRegression
+X = [[1], [2], [3], [4], [5], [6]]
+y = [0, 0, 0, 1, 1, 1]
+model = LogisticRegression()
+model.fit(X, y)
+print("Prediction:", model.predict([[5]]))
+
+
+9.
+from sklearn.cluster import KMeans
+X = [[1, 2], [2, 3], [3, 2],
+     [8, 8], [9, 8], [8, 9]]
+model = KMeans(n_clusters=2, random_state=0, n_init=10)
+model.fit(X)
+print("Cluster Labels:", model.labels_)
+print("Cluster Centers:")
+print(model.cluster_centers_)
